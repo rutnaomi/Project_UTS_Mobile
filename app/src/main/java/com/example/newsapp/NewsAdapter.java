@@ -3,6 +3,7 @@ package com.example.newsapp;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -10,36 +11,43 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
-    private List<String> newsList;
+public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
-    public NewsAdapter(List<String> newsList) {
-        this.newsList = newsList;
+    private List<NewsItem> newsItems;
+
+    public NewsAdapter(List<NewsItem> newsItems) {
+        this.newsItems = newsItems;
     }
 
     @NonNull
     @Override
-    public NewsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news, parent, false);
-        return new NewsViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NewsViewHolder holder, int position) {
-        holder.textView.setText(newsList.get(position));
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        NewsItem currentItem = newsItems.get(position);
+
+        // Set gambar dari drawable menggunakan resource ID
+        holder.imageView.setImageResource(currentItem.getImageResId());
+        holder.description.setText(currentItem.getDescription());
     }
 
     @Override
     public int getItemCount() {
-        return newsList.size();
+        return newsItems.size();
     }
 
-    public static class NewsViewHolder extends RecyclerView.ViewHolder {
-        TextView textView;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView imageView;
+        TextView description;
 
-        public NewsViewHolder(@NonNull View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.text_view);
+            imageView = itemView.findViewById(R.id.iv_news_image);
+            description = itemView.findViewById(R.id.tv_news_description);
         }
     }
 }

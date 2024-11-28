@@ -1,28 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:columnCount="2"
-    android:padding="16dp">
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#FFFFFF">
 
-    <Button
-        android:id="@+id/btn_politics"
-        android:layout_width="0dp"
+    <!-- Header -->
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        android:text="Berita Politik" />
+        android:text="News upTodate"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#E53935"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="16dp" />
 
-    <Button
-        android:id="@+id/btn_technology"
-        android:layout_width="0dp"
+    <!-- Grid of Categories -->
+    <GridLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        android:text="Teknologi" />
+        android:columnCount="2"
+        android:rowCount="2"
+        android:alignmentMode="alignMargins"
+        android:padding="8dp">
 
-    <Button
-        android:id="@+id/btn_health"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        android:text="Kesehatan" />
-</GridLayout>
+        <!-- Politik Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_politik"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardBackgroundColor="#F5F5F5"
+            app:cardElevation="4dp"
+            android:layout_columnSpan="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_politics" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Politik"
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Kesehatan Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_kesehatan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardBackgroundColor="#F5F5F5"
+            app:cardElevation="4dp"
+            android:layout_columnSpan="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_health" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kesehatan"
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Teknologi Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_teknologi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardBackgroundColor="#F5F5F5"
+            app:cardElevation="4dp"
+            android:layout_columnSpan="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_technology" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Teknologi"
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </GridLayout>
+</LinearLayout>
